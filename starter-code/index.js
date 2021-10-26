@@ -1,10 +1,5 @@
 let crewMembers = [];
 
-fetch("./data.json")
-  .then((res) => res.json())
-  .then((data) => (crewMembers = data["crew"]))
-  .catch((error) => error);
-
 // icon
 
 const icon = document.querySelector(".hamburger");

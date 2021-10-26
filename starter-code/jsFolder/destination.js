@@ -5,13 +5,17 @@ const imgFile = [
   "./assets/destination/image-europa.png",
   "./assets/destination/image-titan.png",
 ];
+var appear = [{ opacity: "0" }, { opacity: "1" }];
 
+var navTiming = {
+  duration: 1000,
+  easing: "ease",
+};
 window.addEventListener("DOMContentLoaded", () => {
   const ul = document.querySelector(".destination_list ul");
   const links = document.querySelectorAll(".destination_list ul li");
   let mainDestination = document.querySelector(".main_destination");
   let destinationImg = document.querySelector(".img img");
-  console.log(mainDestination);
   ul.addEventListener("click", (e) => {
     let current = e.target;
     removeCurrent(links);
@@ -43,17 +47,20 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       })
       .catch((error) => console.log(error));
+
+    mainDestination.animate(appear, navTiming);
+    destinationImg.animate(appear, navTiming);
   });
 });
 
 function removeCurrent(links) {
   links.forEach((link) => {
-    link.classList.remove("current");
+    link.classList.remove("active");
   });
 }
 
 function addCurrent(target) {
-  target.classList.add("current");
+  target.classList.add("active");
 }
 const icon = document.querySelector(".hamburger");
 let iconImg = document.querySelector(".hamburger img");
