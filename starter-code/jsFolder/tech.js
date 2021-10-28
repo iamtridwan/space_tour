@@ -113,65 +113,33 @@ const data = {
     },
   ],
 };
+
 const imgFile = [
-  "./assets/destination/image-moon.png",
+  [
+    "./assets/technology/image-launch-vehicle-portrait.jpg",
+    "./assets/technology/image-launch-vehicle-landscape.jpg",
+  ],
+  [
+    "./assets/technology/image-spaceport-portrait.jpg",
+    "./assets/technology/image-spaceport-landscape.jpg",
+  ],
 
-  "./assets/destination/image-mars.png",
-  "./assets/destination/image-europa.png",
-  "./assets/destination/image-titan.png",
+  [
+    "./assets/technology/image-space-capsule-portrait.jpg",
+    "./assets/technology/image-space-capsule-landscape.jpg",
+  ],
 ];
-var appear = [{ opacity: "0" }, { opacity: "1" }];
-
-var navTiming = {
-  duration: 1000,
-  easing: "ease",
-};
-window.addEventListener("DOMContentLoaded", () => {
-  const ul = document.querySelector(".destination_list ul");
-  const links = document.querySelectorAll(".destination_list ul li");
-  let mainDestination = document.querySelector(".main_destination");
-  let destinationImg = document.querySelector(" .detail_info img");
-  ul.addEventListener("click", (e) => {
-    let current = e.target;
-    removeCurrent(links);
-    addCurrent(current);
-    data["destinations"].forEach((d, index) => {
-      if (parseInt(current.dataset.id) === index) {
-        destinationImg.src = imgFile[index];
-        mainDestination.innerHTML = `
-        <div class="destination_detail">
-                  <h2>${d.name}</h2>
-                  <p class="story">${d.description}</p>
-                </div>
-                <div class="travel_log">
-                  <div class="distance">
-                    <p>Avg. distance</p>
-                    <h4>${d.distance}</h4>
-                  </div>
-                  <div class="time">
-                    <p>Est. travel time</p>
-                    <h4>${d.travel}</h4>
-                  </div>
-                </div>
-
-        `;
-      }
-    });
-
-    mainDestination.animate(appear, navTiming);
-    destinationImg.animate(appear, navTiming);
-  });
-});
-
 function removeCurrent(links) {
   links.forEach((link) => {
-    link.classList.remove("active");
+    link.classList.remove("btn-active");
   });
 }
 
 function addCurrent(target) {
-  target.classList.add("active");
+  target.classList.add("btn-active");
 }
+
+// toggle nav menu
 const icon = document.querySelector(".hamburger");
 let iconImg = document.querySelector(".hamburger img");
 let header = document.querySelector("header");
@@ -184,3 +152,31 @@ icon.addEventListener("click", () => {
     iconImg.src = "./assets/shared/icon-close.svg";
   }
 });
+
+const buttons = document.querySelectorAll("button");
+const btn = document.querySelector(".btns");
+// updating selected button
+btn.addEventListener("click", (e) => {
+  let current = e.target;
+  let id = current.dataset.id;
+  removeCurrent(buttons);
+  addCurrent(current);
+  populateData(data, id);
+});
+
+function populateData(data, id) {
+  let name = document.querySelector("h1");
+  let desc = document.querySelector("p");
+  let img = document.querySelector(".tech_pics");
+  name.textContent = data.technology[id].name;
+  desc.textContent = data.technology[id].description;
+  let screenSize = parseInt(window.innerWidth);
+  if (screenSize > 768) {
+    img.style.backgroundImage = `url(${imgFile[id][0]})`;
+  } else {
+    img.style.backgroundImage = `url(${imgFile[id][1]})`;
+  }
+}
+// window.addEventListener("DOMContentLoaded", () => {
+//   console.log(window.innerWidth);
+// });

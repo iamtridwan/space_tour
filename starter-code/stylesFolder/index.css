@@ -8,7 +8,16 @@
   --font1: "Bellefair";
   --font2: "Barlow Condensed";
 }
-
+main {
+  font-family: var(--font1);
+  background-image: url("../assets/home/background-home-desktop.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
 /* intro */
 
 .intro {
@@ -75,6 +84,10 @@ h3 {
 }
 
 @media screen and (max-width: 768px) {
+  main {
+    background-image: url("../assets/home/background-home-tablet.jpg");
+    background-size: cover;
+  }
   span {
     display: none;
   }
@@ -106,7 +119,10 @@ h3 {
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
+  main {
+    background-image: url("../assets/home/background-home-mobile.jpg");
+  }
   span {
     display: inline;
   }
@@ -114,7 +130,9 @@ h3 {
     width: 90%;
   }
   .intro_para h5 {
-    font-size: 18px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
   }
   .intro_para p {
     width: 100%;
