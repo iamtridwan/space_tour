@@ -1,6 +1,4 @@
-let crewMembers = [];
-
-// icon
+// nav toggle icon
 
 const icon = document.querySelector(".hamburger");
 let iconImg = document.querySelector(".hamburger img");
@@ -13,4 +11,10 @@ icon.addEventListener("click", () => {
     header.classList.add("show-nav");
     iconImg.src = "./assets/shared/icon-close.svg";
   }
+});
+
+// switching to destination page
+let expButton = document.querySelector(".exp_button");
+expButton.addEventListener("click", () => {
+  window.location.href = "destination.html";
 });

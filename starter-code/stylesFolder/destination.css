@@ -74,6 +74,9 @@ img {
   padding: 10px 0;
   cursor: pointer;
 }
+.destination_list ul li:focus {
+  outline: 2px dotted var(--white);
+}
 .destination_list ul li:hover {
   border-bottom: 2px solid var(--gray);
 }
