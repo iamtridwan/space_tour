@@ -84,7 +84,6 @@ button {
   outline: none;
   cursor: pointer;
   background-color: #6d6d6e;
-  transition: width 1s ease-out height 1s ease-out;
 }
 
 .btn-active {
